@@ -11,7 +11,7 @@ set(SOURCES
 )
 
 # Create the static library
-add_library(libaco STATIC ${SOURCES})
+add_library(aco STATIC ${SOURCES})
 
 # Specify include directories
-target_include_directories(libaco PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(aco PUBLIC ${PROJECT_SOURCE_DIR}/include)

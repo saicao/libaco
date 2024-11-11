@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Set the project name
+project(libaco LANGUAGES C ASM)
+
+# Add the source files for the library
+set(SOURCES
+    src/aco.c
+    src/acosw.S  # Assuming this is located in src/
+    # Add more source files as needed
+)
+
+# Create the static library
+add_library(libaco STATIC ${SOURCES})
+
+# Specify include directories
+target_include_directories(libaco PUBLIC ${PROJECT_SOURCE_DIR}/include)

@@ -238,9 +238,14 @@ aco_funcp_protector_asm:
             mov     x9, sp
             and     x9, x9, #0xfffffffffffffff0
             mov     sp, x9
+        #if defined(__APPLE__)
+            bl      _aco_funcp_protector
+            bl      _abort
+        #else
             bl      aco_funcp_protector
             bl      abort
             ret
+        #endif
 #else
     #error "platform not support"
 #endif

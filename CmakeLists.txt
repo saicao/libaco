@@ -11,7 +11,16 @@ set(SOURCES
 )
 
 # Create the static library
-add_library(aco STATIC ${SOURCES})
-
+add_library(aco STATIC ${SOURCES} )
+add_library(libaco::aco ALIAS aco)
 # Specify include directories
-target_include_directories(aco PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(aco PUBLIC
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include/libaco>
+)
+install(TARGETS aco
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
